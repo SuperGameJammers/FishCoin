@@ -1,0 +1,32 @@
+<h2>Listing savings</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Due date</th>
+      <th>Amount to raise</th>
+      <th>Name</th>
+      <th>Photo</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for saving <- @savings do %>
+    <tr>
+      <td><%= saving.due_date %></td>
+      <td><%= saving.amount_to_raise %></td>
+      <td><%= saving.name %></td>
+      <td><%= saving.photo %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: saving_path(@conn, :show, saving), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: saving_path(@conn, :edit, saving), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: saving_path(@conn, :delete, saving), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New saving", to: saving_path(@conn, :new) %>

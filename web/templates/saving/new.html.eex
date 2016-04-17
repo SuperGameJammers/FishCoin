@@ -1,0 +1,6 @@
+<h2>New saving</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: saving_path(@conn, :create) %>
+
+<%= link "Back", to: saving_path(@conn, :index) %>

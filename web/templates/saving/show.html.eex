@@ -1,0 +1,28 @@
+<h2>Show saving</h2>
+
+<ul>
+
+  <li>
+    <strong>Due date:</strong>
+    <%= @saving.due_date %>
+  </li>
+
+  <li>
+    <strong>Amount to raise:</strong>
+    <%= @saving.amount_to_raise %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @saving.name %>
+  </li>
+
+  <li>
+    <strong>Photo:</strong>
+    <%= @saving.photo %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: saving_path(@conn, :edit, @saving) %>
+<%= link "Back", to: saving_path(@conn, :index) %>
