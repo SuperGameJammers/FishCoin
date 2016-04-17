@@ -19,6 +19,7 @@ defmodule FishCoin.Router do
     get "/", PageController, :index
     
     resources "/savings", SavingController
+    resources "/payments", PaymentController
   end
 
   # Other scopes may use custom stacks.
