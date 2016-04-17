@@ -1,40 +1,56 @@
-<h2>Mis ahorros</h2>
+<center>  
+  <h2>Mis ahorros</h2>
+  <br>
+  <button>
+    <%= link "Nueva meta", to: saving_path(@conn, :new) %>
+  </button>
+  <br><br>
+  
+  <%= if @savings != [] do %>
+    <%= for saving <- @savings do %>
+      <div style="background-image: url(<%= saving.photo %>);" class="saving-card">
+        <br><br><br><br>
+        <a href="/savings/<%= saving.id %>">
+          <p class="saving-name"><%= saving.name %><a href="/savings/<%= saving.id %>"></p>
+        </a>
+        <p>$<%= saving.amount_to_raise %></p>
+        <p class="iso-due-date"><%= saving.due_date %></p>
+      </div>
+      <br><br>
+    <% end %>
+  <% else %>
+    <div style="background-color:gray" class="saving-card">
+      <br><br><br><br><br><br><br><br>
+      <p class="saving-invite">Aún no has creado una meta de ahorro</p>
+    </div>
+  <% end %>
 
-<%= for saving <- @savings do %>
-  <div style="background-image: url(<%= saving.photo %>);">
-    <p><%= saving.name %></p>
-    <p><%= saving.amount_to_raise %></p>
-    <p><%= saving.due_date %></p>
-  </div>
-<% end %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Due date</th>
+        <th>Amount to raise</th>
+        <th>Name</th>
+        <th>Photo</th>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Due date</th>
-      <th>Amount to raise</th>
-      <th>Name</th>
-      <th>Photo</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+  <%= for saving <- @savings do %>
+      <tr>
+        <td><%= saving.due_date %></td>
+        <td><%= saving.amount_to_raise %></td>
+        <td><%= saving.name %></td>
+        <td><%= saving.photo %></td>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for saving <- @savings do %>
-    <tr>
-      <td><%= saving.due_date %></td>
-      <td><%= saving.amount_to_raise %></td>
-      <td><%= saving.name %></td>
-      <td><%= saving.photo %></td>
-
-      <td class="text-right">
-        <%= link "Show", to: saving_path(@conn, :show, saving), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: saving_path(@conn, :edit, saving), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: saving_path(@conn, :delete, saving), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-<%= link "New saving", to: saving_path(@conn, :new) %>
+        <td class="text-right">
+          <%= link "Show", to: saving_path(@conn, :show, saving), class: "btn btn-default btn-xs" %>
+          <%= link "Edit", to: saving_path(@conn, :edit, saving), class: "btn btn-default btn-xs" %>
+          <%= link "Delete", to: saving_path(@conn, :delete, saving), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        </td>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</center>
