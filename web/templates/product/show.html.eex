@@ -1,33 +1,16 @@
-<h2>Show product</h2>
-
-<ul>
-
-  <li>
-    <strong>Name:</strong>
-    <%= @product.name %>
-  </li>
-
-  <li>
-    <strong>Description:</strong>
-    <%= @product.description %>
-  </li>
-
-  <li>
-    <strong>Photo:</strong>
-    <%= @product.photo %>
-  </li>
-
-  <li>
-    <strong>Discount:</strong>
-    <%= @product.discount %>
-  </li>
-
-  <li>
-    <strong>Price:</strong>
-    <%= @product.price %>
-  </li>
-
-</ul>
-
-<%= link "Edit", to: product_path(@conn, :edit, @product) %>
-<%= link "Back", to: product_path(@conn, :index) %>
+<center>
+  <div style="background-image: url(<%= @product.photo %>);" class="saving-card">
+    <br><br><br><br>
+    <p class="saving-name"><%= @product.name %></p>
+    <br>
+    <div class="amounts-box">
+      <p class="amounts">DE  </p>
+      <p class="amounts" style="text-decoration: line-through;">$<%= @product.price %> </p>
+      <p class="amounts">   A  </p>
+      <p class="amounts"> $<%= discounted(@product.price, @product.discount) %></p>
+    </div>
+    <br><br>
+  </div>
+  <br><br>
+    <p class="product-desc"><%= @product.description %></p>
+</center>

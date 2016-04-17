@@ -21,13 +21,14 @@
         <p class="amounts">$<%= @saving.amount_to_raise - @total %></p>
       </div>
     </div>
+    <br>
+    <p class="iso-due-date"><%= @saving.due_date %></p>
   <% else %>
     <div class="amounts-box">
         <p class="amounts">META CONSEGUIDA</p>
       </div>
   <% end %>
   
-  <p class="iso-due-date"><%= @saving.due_date %></p>
   <br>
 
   <button>
@@ -43,10 +44,11 @@
       <br>
       <div class="amounts-box">
         <p class="amounts">DE  </p>
-        <p class="amounts">$<%= @saving.amount_to_raise %> </p>
+        <p class="amounts" style="text-decoration: line-through;">$<%= product.price %> </p>
         <p class="amounts">   A  </p>
         <p class="amounts"> $<%= discounted(product.price, product.discount) %></p>
       </div>
     </div>
+    <br><br><br>
   <% end %>
 </center>  

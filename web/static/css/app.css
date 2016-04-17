@@ -38,9 +38,13 @@ p {
   opacity: 0.7;
 }
 
+.product-desc {
+  font-style: italic;
+  font-size: 3vh;
+}
+
 .saving-card > .saving-name {
   font-size: 7vh;
-  color: yellow !important;
   background-color: white;
   opacity: 0.7;
 }

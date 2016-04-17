@@ -13,8 +13,14 @@
         <a href="/savings/<%= saving.id %>">
           <p class="saving-name"><%= saving.name %><a href="/savings/<%= saving.id %>"></p>
         </a>
-        <p>$<%= saving.amount_to_raise %></p>
-        <p class="iso-due-date"><%= saving.due_date %></p>
+        <br><br>
+        <div class="amounts-box">
+          <p class="amounts">$<%= saving.amount_to_raise %></p>
+        </div>
+        <br><br>
+        <div class="amounts-box">
+          <p class="iso-due-date amounts"><%= saving.due_date %></p>
+        </div>
       </div>
       <br><br>
     <% end %>
@@ -24,33 +30,4 @@
       <p class="saving-invite">Aún no has creado una meta de ahorro</p>
     </div>
   <% end %>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Due date</th>
-        <th>Amount to raise</th>
-        <th>Name</th>
-        <th>Photo</th>
-
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-  <%= for saving <- @savings do %>
-      <tr>
-        <td><%= saving.due_date %></td>
-        <td><%= saving.amount_to_raise %></td>
-        <td><%= saving.name %></td>
-        <td><%= saving.photo %></td>
-
-        <td class="text-right">
-          <%= link "Show", to: saving_path(@conn, :show, saving), class: "btn btn-default btn-xs" %>
-          <%= link "Edit", to: saving_path(@conn, :edit, saving), class: "btn btn-default btn-xs" %>
-          <%= link "Delete", to: saving_path(@conn, :delete, saving), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-        </td>
-      </tr>
-  <% end %>
-    </tbody>
-  </table>
 </center>
