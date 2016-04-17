@@ -19,6 +19,21 @@
   text-align: center;
 }
 
+p {
+  font-size: 5vh;
+  text-align: center;
+}
+
+.amounts {
+  font-size: 3vh;
+  display: inline;
+}
+
+.amounts-box {
+  display: inline;
+  margin: 10px;
+}
+
 .saving-card > .saving-name {
   font-size: 7vh;
   color: yellow !important;

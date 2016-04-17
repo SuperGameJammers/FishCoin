@@ -2,6 +2,7 @@ defmodule FishCoin.SavingController do
   use FishCoin.Web, :controller
 
   alias FishCoin.Saving
+  alias FishCoin.Payment
 
   plug :scrub_params, "saving" when action in [:create, :update]
 
@@ -30,7 +31,14 @@ defmodule FishCoin.SavingController do
 
   def show(conn, %{"id" => id}) do
     saving = Repo.get!(Saving, id)
-    render(conn, "show.html", saving: saving)
+    payments = Repo.all(Payment)
+    total = sum(payments)
+    render(conn, "show.html", saving: saving, payments: payments, total: total)
+  end
+
+  def sum(savings) do
+    Enum.map(savings, fn(x) -> x.amount end)
+    |> Enum.sum
   end
 
   def edit(conn, %{"id" => id}) do

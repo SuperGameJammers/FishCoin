@@ -1,30 +1,37 @@
-<h2>Show saving</h2>
+<center>
+  <div style="background-image: url(<%= @saving.photo %>);" class="saving-card">
+    <br><br><br><br><br><br><br>
+    <a href="/savings/<%= @saving.id %>">
+      <p class="saving-name"><%= @saving.name %><a href="/savings/<%= @saving.id %>"></p>
+    </a>
+  </div>
+  <br>
+  <%= if @total < @saving.amount_to_raise do %>
+    <div>
+      <div class="amounts-box">
+        <p class="amounts">META  </p>
+        <p class="amounts">$<%= @saving.amount_to_raise %></p>
+      </div>
+      <div class="amounts-box">
+        <p class="amounts">TOTAL  </p>
+        <p class="amounts">$<%= @total %></p>
+      </div>
+      <div class="amounts-box">
+        <p class="amounts">FALTAN  </p>
+        <p class="amounts">$<%= @saving.amount_to_raise - @total %></p>
+      </div>
+    </div>
+  <% else %>
+    <div class="amounts-box">
+        <p class="amounts">META CONSEGUIDA</p>
+      </div>
+  <% end %>
+  
+  <p class="iso-due-date"><%= @saving.due_date %></p>
+  <br>
 
-<a href="/payments/new">NUEVO PAGO</a>
-
-<ul>
-
-  <li>
-    <strong>Due date:</strong>
-    <%= @saving.due_date %>
-  </li>
-
-  <li>
-    <strong>Amount to raise:</strong>
-    <%= @saving.amount_to_raise %>
-  </li>
-
-  <li>
-    <strong>Name:</strong>
-    <%= @saving.name %>
-  </li>
-
-  <li>
-    <strong>Photo:</strong>
-    <%= @saving.photo %>
-  </li>
-
-</ul>
-
-<%= link "Edit", to: saving_path(@conn, :edit, @saving) %>
-<%= link "Back", to: saving_path(@conn, :index) %>
+  <button>
+    <a href="/payments/new">NUEVO PAGO</a>
+  </button>
+  <br><br><br>
+</center>  
