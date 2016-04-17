@@ -1,4 +1,12 @@
-<h2>Listing savings</h2>
+<h2>Mis ahorros</h2>
+
+<%= for saving <- @savings do %>
+  <div style="background-image: url(<%= saving.photo %>);">
+    <p><%= saving.name %></p>
+    <p><%= saving.amount_to_raise %></p>
+    <p><%= saving.due_date %></p>
+  </div>
+<% end %>
 
 <table class="table">
   <thead>
