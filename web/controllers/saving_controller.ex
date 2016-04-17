@@ -3,6 +3,7 @@ defmodule FishCoin.SavingController do
 
   alias FishCoin.Saving
   alias FishCoin.Payment
+  alias FishCoin.Product
 
   plug :scrub_params, "saving" when action in [:create, :update]
 
@@ -33,7 +34,8 @@ defmodule FishCoin.SavingController do
     saving = Repo.get!(Saving, id)
     payments = Repo.all(Payment)
     total = sum(payments)
-    render(conn, "show.html", saving: saving, payments: payments, total: total)
+    products = Repo.all(Product)
+    render(conn, "show.html", saving: saving, payments: payments, total: total, products: products)
   end
 
   def sum(savings) do

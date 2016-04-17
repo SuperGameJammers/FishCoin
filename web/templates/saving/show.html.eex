@@ -34,4 +34,19 @@
     <a href="/payments/new">NUEVO PAGO</a>
   </button>
   <br><br><br>
+  <%= for product <- @products do %>
+    <div style="background-image: url(<%= product.photo %>);" class="saving-card">
+      <br><br><br><br>
+      <a href="/products/<%= product.id %>">
+        <p class="saving-name"><%= product.name %><a href="/savings/<%= @saving.id %>"></p>
+      </a>
+      <br>
+      <div class="amounts-box">
+        <p class="amounts">DE  </p>
+        <p class="amounts">$<%= @saving.amount_to_raise %> </p>
+        <p class="amounts">   A  </p>
+        <p class="amounts"> $<%= discounted(product.price, product.discount) %></p>
+      </div>
+    </div>
+  <% end %>
 </center>  

@@ -20,6 +20,7 @@ defmodule FishCoin.Router do
     
     resources "/savings", SavingController
     resources "/payments", PaymentController
+    resources "/products", ProductController
   end
 
   # Other scopes may use custom stacks.
