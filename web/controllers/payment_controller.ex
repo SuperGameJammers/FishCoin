@@ -22,7 +22,7 @@ defmodule FishCoin.PaymentController do
       {:ok, _payment} ->
         conn
         |> put_flash(:info, "Payment created successfully.")
-        |> redirect(to: payment_path(conn, :index))
+        |> redirect(to: "/savings/3")
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
